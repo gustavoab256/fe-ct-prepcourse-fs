@@ -10,7 +10,7 @@ function crearGato(nombre, edad) {
    var nombreEdad = {
       nombre:nombre,
       edad:edad,
-      meow: function meow(){
+      meow: function (){
          return "Meow!"
       }}
    return nombreEdad;
@@ -21,7 +21,10 @@ function nuevoUsuario(nombre, email, password) {
    // Este debe tener las propiedades: "nombre", "email" y "password" con sus respectivos valores.
    // Retornar el objeto.
    // Tu código:
-   var Usuario = {nombre: nombre, email: email, password:password}
+   var Usuario = {
+      nombre: nombre, 
+      email: email, 
+      password:password}
    return Usuario;
 }
 
@@ -40,7 +43,9 @@ function invocarMetodo(objeto, metodo) {
    // Esta propiedad contiene una función en su interior. Debes invocarla/ejecutarla.
    // [NOTA]: no necesitar retornar nada.
    // Tu código:
-   if (objeto.hasOwnProperty(metodo) && typeof objeto[metodo] === 'function');
+
+  // if (objeto.hasOwnProperty(metodo) && typeof objeto[metodo] === 'function');
+   //objeto[metodo]();
    objeto[metodo]();
 }
 
@@ -48,8 +53,10 @@ function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
    // El parámetro "objetoMisterioso" posee una propiedad con el nombre "numeroMisterioso".
    // Debes multiplicar este número por 5 y retornar el resultado.
    // Tu código:
-   var objeto = objetoMisterioso.numeroMisterioso;
-   return objeto*5;
+   //var objeto = objetoMisterioso.numeroMisterioso;
+   //return objeto*5;
+   var producto = objetoMisterioso.numeroMisterioso * 5;
+   return producto;
 }
 
 function eliminarPropiedad(objeto, propiedad) {
@@ -64,6 +71,7 @@ function tieneEmail(objetoUsuario) {
    // Verifica si el "objetoUsuario", en su propiedad "email", posee un valor definido.
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+
    if (objetoUsuario.email)
    return true;
    return false;
@@ -73,16 +81,18 @@ function tienePropiedad(objeto, propiedad) {
    // Verifica si el objeto recibido posee una propiedad con el mismo nombre que el parámetro "propiedad".
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
-   if (objeto.hasOwnProperty(propiedad)) return true;
-   return false;
+   return objeto.hasOwnProperty(propiedad);
+   //if (objeto.hasOwnProperty(propiedad)) return true;
+   //return false;
 }
 
 function verificarPassword(objetoUsuario, password) {
    // Verifica si la propiedad "password" del "objetoUsuario" coincide con el parámetro "password".
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
-   if (objetoUsuario.password === password) return true;
-   return false;
+   if (objetoUsuario.password === password) 
+      return true;
+      return false;
 }
 
 function actualizarPassword(objetoUsuario, nuevaPassword) {
@@ -90,8 +100,10 @@ function actualizarPassword(objetoUsuario, nuevaPassword) {
    // La nueva contraseña la recibes por parámetro.
    // Retornar el objeto.
    // Tu código:
-   objetoUsuario.password = nuevaPassword;
-   return objetoUsuario;
+   objetoUsuario['password'] = nuevaPassword;
+   return objetoUsuario
+   //objetoUsuario.password = nuevaPassword;
+   //return objetoUsuario;
 }
 
 function agregarAmigo(objetoUsuario, nuevoAmigo) {
@@ -109,9 +121,12 @@ function pasarUsuarioAPremium(objetoMuchosUsuarios) {
    // Define esta propiedad de todos los usuarios como true.
    // Retornar el arreglo.
    // Tu código:
-   objetoMuchosUsuarios.forEach((usuario) => {
+   objetoMuchosUsuarios.forEach(function(usuario){
       usuario.esPremium = true;
-   });
+   })
+   //objetoMuchosUsuarios.forEach((usuario) => {
+   //   usuario.esPremium = true;
+   //});
    return objetoMuchosUsuarios;
 }
 
@@ -122,9 +137,12 @@ function sumarLikesDeUsuario(objetoUsuario) {
    // Debes sumar los likes de todos los post y retornar el resultado.
    // Tu código:
    var suma = 0 ;
-   objetoUsuario.posts.forEach((post)=> {
-      suma += post.likes
+   objetoUsuario.posts.forEach(function(post){
+      suma = suma  + post.likes
    })
+   //objetoUsuario.posts.forEach((post)=> {
+   //   suma += post.likes
+   //})
    return suma;
    }
    
